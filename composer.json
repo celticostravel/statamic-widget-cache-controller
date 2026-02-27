@@ -1,5 +1,5 @@
 {
-    "name": "webographen/statamic-widget-cache-controller",
+    "name": "celticostravel/statamic-widget-cache-controller",
     "license": "MIT",
     "type": "statamic-addon",
     "description": "Clear Statamic's caches from the control panel",
