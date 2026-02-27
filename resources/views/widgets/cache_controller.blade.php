@@ -1,49 +1,61 @@
-<div class="h-full p-0 card">
-    <header class="flex items-center justify-between p-2 border-b">
-        <h2 class="flex items-center">
-            <div class="w-6 h-6 mr-1 text-grey-80">
-                @cp_svg('icons/light/content-writing')
+<div class="bg-white dark:bg-gray-850 rounded-xl ring ring-gray-200 dark:ring-x-0 dark:ring-b-0 dark:ring-gray-700/80 shadow-ui-md @container/widget" data-ui-card="" data-inset="true">
+    <div class="flex h-full flex-col">
+        <header class="flex items-center min-h-[49px] justify-between border-b border-gray-200 px-4.5 py-2 dark:border-gray-700">
+            <a class="flex items-center gap-2 sm:gap-3" href="{{ cp_route('utilities.cache') }}">
+                @cp_svg('icons/light/cache', 'size-4 shrink-0 hidden! size-5 text-gray-500 @xs/widget:block!')
+                <span>{{ __('Cache Manager') }}</span>
+            </a>
+        </header>
+        <div class="flex flex-col gap-3 p-4 flex-1">
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <h3 class="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">{{ __('Content Stache') }}</h3>
+                    <form method="POST" action="{{ cp_route('utilities.cache.clear-stache') }}">
+                        @csrf
+                        <button type="submit" class="relative inline-flex items-center justify-center w-full whitespace-nowrap shrink-0 font-medium antialiased cursor-pointer no-underline bg-linear-to-b from-white to-gray-50 hover:to-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-ui-sm dark:from-gray-850 dark:to-gray-900 dark:hover:to-gray-850 dark:border-gray-700/80 dark:text-gray-300 dark:shadow-ui-md px-3 h-10 text-sm leading-tight rounded-lg">
+                            {{ __('Clear') }}
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">{{ __('Static Page Cache') }}</h3>
+                    @if (config('statamic.static_caching.strategy'))
+                        <form method="POST" action="{{ cp_route('utilities.cache.clear-static') }}">
+                            @csrf
+                            <button type="submit" class="relative inline-flex items-center justify-center w-full whitespace-nowrap shrink-0 font-medium antialiased cursor-pointer no-underline bg-linear-to-b from-white to-gray-50 hover:to-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-ui-sm dark:from-gray-850 dark:to-gray-900 dark:hover:to-gray-850 dark:border-gray-700/80 dark:text-gray-300 dark:shadow-ui-md px-3 h-10 text-sm leading-tight rounded-lg">
+                                {{ __('Clear') }}
+                            </button>
+                        </form>
+                    @else
+                        <span class="relative inline-flex items-center justify-center w-full whitespace-nowrap font-medium text-gray-400 dark:text-gray-600 border border-gray-200 dark:border-gray-700/50 px-3 h-10 text-sm leading-tight rounded-lg cursor-not-allowed">
+                            {{ __('Disabled') }}
+                        </span>
+                    @endif
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">{{ __('Application Cache') }}</h3>
+                    <form method="POST" action="{{ cp_route('utilities.cache.clear-application-cache') }}">
+                        @csrf
+                        <button type="submit" class="relative inline-flex items-center justify-center w-full whitespace-nowrap shrink-0 font-medium antialiased cursor-pointer no-underline bg-linear-to-b from-white to-gray-50 hover:to-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-ui-sm dark:from-gray-850 dark:to-gray-900 dark:hover:to-gray-850 dark:border-gray-700/80 dark:text-gray-300 dark:shadow-ui-md px-3 h-10 text-sm leading-tight rounded-lg">
+                            {{ __('Clear') }}
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">{{ __('Image Cache') }}</h3>
+                    <form method="POST" action="{{ cp_route('utilities.cache.clear-image-cache') }}">
+                        @csrf
+                        <button type="submit" class="relative inline-flex items-center justify-center w-full whitespace-nowrap shrink-0 font-medium antialiased cursor-pointer no-underline bg-linear-to-b from-white to-gray-50 hover:to-gray-100 hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-ui-sm dark:from-gray-850 dark:to-gray-900 dark:hover:to-gray-850 dark:border-gray-700/80 dark:text-gray-300 dark:shadow-ui-md px-3 h-10 text-sm leading-tight rounded-lg">
+                            {{ __('Clear') }}
+                        </button>
+                    </form>
+                </div>
             </div>
-            <span>{{ __('Cache Manager') }}</span>
-        </h2>
-    </header>
-    <div class="flex flex-wrap">
-        <div class="w-1/2 p-2">
-            <h3 class="font-bold mb-1">{{ __('Content Stache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear-stache') }}">
-                @csrf
-                <button type="submit" class="btn w-full">{{ __('Clear') }}</button>
-            </form>
-        </div>
-        <div class="w-1/2 p-2">
-            <h3 class="font-bold mb-1">{{ __('Static Page Cache') }}</h3>
-            @if (config('statamic.static_caching.strategy'))
-                <form method="POST" action="{{ cp_route('utilities.cache.clear-static') }}">
-                    @csrf
-                    <button type="submit" class="btn w-full">{{ __('Clear') }}</button>
-                </form>
-            @else
-                disabled
-            @endif
-        </div>
-        <div class="w-1/2 p-2">
-            <h3 class="font-bold mb-1">{{ __('Application Cache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear-application-cache') }}">
-                @csrf
-                <button type="submit" class="btn w-full">{{ __('Clear') }}</button>
-            </form>
-        </div>
-        <div class="w-1/2 p-2">
-            <h3 class="font-bold mb-1">{{ __('Image Cache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear-image-cache') }}">
-                @csrf
-                <button type="submit" class="btn w-full">{{ __('Clear') }}</button>
-            </form>
-        </div>
-        <div class="w-full p-2 border-t">
             <form method="POST" action="{{ cp_route('utilities.cache.clear-all') }}">
                 @csrf
-                <button type="submit" class="btn-primary w-full">{{ __('Clear All') }}</button>
+                <button type="submit" class="relative inline-flex items-center justify-center w-full whitespace-nowrap shrink-0 font-medium antialiased cursor-pointer no-underline bg-linear-to-b from-primary/90 to-primary hover:bg-primary-hover text-white border border-primary-border shadow-ui-md inset-shadow-2xs inset-shadow-white/25 px-4 h-10 text-sm rounded-lg">
+                    {{ __('Clear All') }}
+                </button>
             </form>
         </div>
     </div>
