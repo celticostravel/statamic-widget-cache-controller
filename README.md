@@ -1,18 +1,34 @@
 # Statamic Widget: Cache Controller
 
-This widget lets you empty all of Statamic's caches right from the control panel dashboard.
+Fork of [webographen/statamic-widget-cache-controller](https://github.com/webographen/statamic-widget-cache-controller) with Statamic 6 support.
+
+Lets you clear all of Statamic's caches from the control panel dashboard.
 
 ## Requirements
 
-- Statamic v3
+- Statamic v6
 
 ## Installation
 
-From your site folder, run `composer require webographen/statamic-widget-cache-controller` - or install it via the control panel.
+Add the VCS repository and require the package in your `composer.json`:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/celticostravel/statamic-widget-cache-controller"
+    }
+],
+"require": {
+    "celticostravel/statamic-widget-cache-controller": "^1.1"
+}
+```
+
+Then run `composer update`.
 
 ## Usage
 
-To add the widget to your control panel dashboard, edit the config under `config/statamic/cp.php` and add the following entry to the `widgets` array:
+Add the widget to your dashboard in `config/statamic/cp.php`:
 
 ```php
 [
@@ -20,7 +36,3 @@ To add the widget to your control panel dashboard, edit the config under `config
     'width' => 50,
 ],
 ```
-
-## About Us
-
-[Webographen](https://webographen.de/) is a digital design studio focusing on Statamic. We make websites that are not just pretty, but scale in terms of design and technology.

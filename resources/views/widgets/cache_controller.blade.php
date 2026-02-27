@@ -10,7 +10,7 @@
     <div class="flex flex-wrap">
         <div class="w-1/2 p-2">
             <h3 class="font-bold mb-1">{{ __('Content Stache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear', 'stache') }}">
+            <form method="POST" action="{{ cp_route('utilities.cache.clear-stache') }}">
                 @csrf
                 <button type="button" class="btn w-full">{{ __('Clear') }}</button>
             </form>
@@ -18,7 +18,7 @@
         <div class="w-1/2 p-2">
             <h3 class="font-bold mb-1">{{ __('Static Page Cache') }}</h3>
             @if (config('statamic.static_caching.strategy'))
-                <form method="POST" action="{{ cp_route('utilities.cache.clear', 'static') }}">
+                <form method="POST" action="{{ cp_route('utilities.cache.clear-static') }}">
                     @csrf
                     <button type="button" class="btn w-full">{{ __('Clear') }}</button>
                 </form>
@@ -28,20 +28,20 @@
         </div>
         <div class="w-1/2 p-2">
             <h3 class="font-bold mb-1">{{ __('Application Cache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear', 'application') }}">
+            <form method="POST" action="{{ cp_route('utilities.cache.clear-application-cache') }}">
                 @csrf
                 <button type="button" class="btn w-full">{{ __('Clear') }}</button>
             </form>
         </div>
         <div class="w-1/2 p-2">
             <h3 class="font-bold mb-1">{{ __('Image Cache') }}</h3>
-            <form method="POST" action="{{ cp_route('utilities.cache.clear', 'image') }}">
+            <form method="POST" action="{{ cp_route('utilities.cache.clear-image-cache') }}">
                 @csrf
                 <button type="button" class="btn w-full">{{ __('Clear') }}</button>
             </form>
         </div>
         <div class="w-full p-2 border-t">
-            <form method="POST" action="{{ cp_route('utilities.cache.clear', 'all') }}">
+            <form method="POST" action="{{ cp_route('utilities.cache.clear-all') }}">
                 @csrf
                 <button type="button" class="btn-primary w-full">{{ __('Clear All') }}</button>
             </form>
